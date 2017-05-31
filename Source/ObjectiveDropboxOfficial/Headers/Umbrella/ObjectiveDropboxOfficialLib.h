@@ -10,6 +10,6 @@
 
 #if TARGET_OS_IOS
 #import "DBSDKImports-iOS.h"
-#elif TARGET_OS_MAC
+#elif TARGET_OS_OSX
 #import "DBSDKImports-macOS.h"
 #endif
