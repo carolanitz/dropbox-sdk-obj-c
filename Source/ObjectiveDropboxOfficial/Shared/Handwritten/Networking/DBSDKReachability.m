@@ -29,7 +29,7 @@ static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char 
 #if kShouldPrintReachabilityFlags
 
   NSLog(@"DBSDKReachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
         (flags & kSCNetworkReachabilityFlagsIsWWAN) ? 'W' : '-',
 #else
         0,
@@ -164,7 +164,7 @@ If the target host is reachable and no connection is required then we'll assume 
     }
   }
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
   if ((flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN) {
     /*
 ... but WWAN connections are OK if the calling application is using the CFNetwork APIs.

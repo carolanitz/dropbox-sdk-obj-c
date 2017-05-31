@@ -8,7 +8,7 @@
 
 #import "DBSDKImportsShared.h"
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
 #import "DBSDKImports-iOS.h"
 #elif TARGET_OS_MAC
 #import "DBSDKImports-macOS.h"

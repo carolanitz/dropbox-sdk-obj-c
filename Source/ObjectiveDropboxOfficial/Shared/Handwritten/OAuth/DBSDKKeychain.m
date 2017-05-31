@@ -31,10 +31,10 @@ static NSString *kV1SyncUserIdKey = @"userId";
 static NSString *kV1SyncUserAccessTokenKey = @"token";
 static NSString *kV1SyncUserAccessTokenSecretKey = @"tokenSecret";
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
 static NSString *kV1IOSKeychainServiceKeyBase = @"%@.dropbox.auth";
 static NSString *kV1IOSUnknownUserIdKey = @"unknown";
-#elif !TARGET_OS_IPHONE
+#elif !TARGET_OS_IOS
 static NSString *kV1OSXKeychainServiceKeyBase = @"%@";
 static const char *kV1OSXAccountName = "Dropbox";
 #endif
@@ -161,14 +161,14 @@ static const char *kV1OSXAccountName = "Dropbox";
   if (migrationOccurred == NO) {
     NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
     NSArray<NSArray<NSString *> *> *v1TokensDataIOSCore = [[self class] v1TokensDataIOSCore];
     NSArray<NSArray<NSString *> *> *v1TokensDataIOSSync = [[self class] v1TokensDataIOSSync];
 
     [v1TokensData addObjectsFromArray:v1TokensDataIOSCore];
     [v1TokensData addObjectsFromArray:v1TokensDataIOSSync];
 
-#elif !TARGET_OS_IPHONE
+#elif !TARGET_OS_IOS
     NSArray<NSArray<NSString *> *> *v1TokensDataOSXCore = [[self class] v1TokensDataOSXCore];
     NSArray<NSArray<NSString *> *> *v1TokensDataOSXSync = [[self class] v1TokensDataOSXSync];
 
@@ -190,7 +190,7 @@ static const char *kV1OSXAccountName = "Dropbox";
   return NO;
 }
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IOS
 + (NSArray<NSArray<NSString *> *> *)v1TokensDataIOSCore {
   NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
 
@@ -276,7 +276,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 }
 #endif
 
-#if !TARGET_OS_IPHONE
+#if !TARGET_OS_IOS
 + (NSArray<NSArray<NSString *> *> *)v1TokensDataOSXCore {
   NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
 
