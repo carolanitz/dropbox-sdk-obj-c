@@ -34,7 +34,7 @@ static NSString *kV1SyncUserAccessTokenSecretKey = @"tokenSecret";
 #if TARGET_OS_IOS
 static NSString *kV1IOSKeychainServiceKeyBase = @"%@.dropbox.auth";
 static NSString *kV1IOSUnknownUserIdKey = @"unknown";
-#elif !TARGET_OS_IOS
+#elif TARGET_OS_OSX
 static NSString *kV1OSXKeychainServiceKeyBase = @"%@";
 static const char *kV1OSXAccountName = "Dropbox";
 #endif
@@ -168,7 +168,7 @@ static const char *kV1OSXAccountName = "Dropbox";
     [v1TokensData addObjectsFromArray:v1TokensDataIOSCore];
     [v1TokensData addObjectsFromArray:v1TokensDataIOSSync];
 
-#elif !TARGET_OS_IOS
+#elif TARGET_OS_OSX
     NSArray<NSArray<NSString *> *> *v1TokensDataOSXCore = [[self class] v1TokensDataOSXCore];
     NSArray<NSArray<NSString *> *> *v1TokensDataOSXSync = [[self class] v1TokensDataOSXSync];
 
@@ -276,7 +276,7 @@ static const char *kV1OSXAccountName = "Dropbox";
 }
 #endif
 
-#if !TARGET_OS_IOS
+#if TARGET_OS_OSX
 + (NSArray<NSArray<NSString *> *> *)v1TokensDataOSXCore {
   NSMutableArray<NSArray<NSString *> *> *v1TokensData = [NSMutableArray new];
 
