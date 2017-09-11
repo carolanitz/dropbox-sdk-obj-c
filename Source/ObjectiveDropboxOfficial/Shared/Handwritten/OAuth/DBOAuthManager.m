@@ -162,7 +162,13 @@ static DBOAuthManager *s_sharedOAuthManager;
   components.path = @"/oauth2/authorize";
 
   NSString *localeIdentifier = [[NSBundle mainBundle] preferredLocalizations].firstObject ?: @"en";
-
+    //these checks are not ok but I can't reproduce why these would be nil so at least we don't crash the app here
+    if (!_appKey) {
+        _appKey = @"";
+    }
+    if (!_redirectURL){
+        _redirectURL = [NSURL new];
+    }
   components.queryItems = @[
     [NSURLQueryItem queryItemWithName:@"response_type" value:@"token"],
     [NSURLQueryItem queryItemWithName:@"client_id" value:_appKey],
