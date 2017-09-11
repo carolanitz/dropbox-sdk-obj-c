@@ -297,7 +297,7 @@
     DBRequestError *networkError = nil;
     NSURL *destination = strongSelf->_destination;
 
-    if (clientError || !resultData || !location) {
+    if (clientError || !resultData || !location || !destination) {
       // error data is in response body (downloaded to output tmp file)
       NSData *errorData = location ? [NSData dataWithContentsOfFile:[location path]] : nil;
       networkError = [DBTransportBaseClient dBRequestErrorWithErrorData:errorData
